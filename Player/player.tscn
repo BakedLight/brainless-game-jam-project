@@ -1,0 +1,194 @@
+[gd_scene format=3 uid="uid://b3tdri2rhvuhk"]
+
+[ext_resource type="Script" uid="uid://tosl4485yfyb" path="res://Player/player.gd" id="1_l8h54"]
+[ext_resource type="Texture2D" uid="uid://cfrujs78b84r0" path="res://Assets/Lights/Light circle.png" id="2_4ntmi"]
+[ext_resource type="PackedScene" uid="uid://ct6df16lc2kd8" path="res://Gun/Weapons/Revolver/revolver.tscn" id="3_btcbx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogq8d"]
+size = Vector2(96, 31.999996)
+
+[sub_resource type="Animation" id="Animation_gwnis"]
+resource_name = "RESET"
+length = 0.009999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons/Special:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/Special:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapons/Revolver:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapons/Revolver:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Weapons/Revolver:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Weapons/Revolver:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_btcbx"]
+resource_name = "fade_gun_to_knife"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Weapons/Revolver:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5707964]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Weapons/Revolver:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.2, 0.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapons/Revolver:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.51900005), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Weapons/Revolver:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwnis"]
+_data = {
+&"RESET": SubResource("Animation_gwnis"),
+&"fade_gun_to_knife": SubResource("Animation_btcbx")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=281525179]
+collision_mask = 54
+script = ExtResource("1_l8h54")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=255355832]
+position = Vector2(2.3841858e-07, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_ogq8d")
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=1437679015]
+scale = Vector2(0.5, 2)
+color = Color(0, 0.919682, 0.8665236, 1)
+polygon = PackedVector2Array(-32, -24, 32, -24, 32, 12, 32, 24, -32, 24)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=495894281]
+color = Color(0.1680183, 0.9977989, 0.24269372, 1)
+polygon = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
+energy = 0.4
+texture = ExtResource("2_4ntmi")
+texture_scale = 1.5
+
+[node name="BulletPos" type="Marker2D" parent="." unique_id=1955019788]
+position = Vector2(57, 0)
+
+[node name="Weapons" type="Node2D" parent="." unique_id=1885392985]
+
+[node name="Weapon switching" type="AnimationPlayer" parent="Weapons" unique_id=636948241]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_gwnis")
+
+[node name="Revolver" parent="Weapons" unique_id=1648468125 instance=ExtResource("3_btcbx")]
+offset = Vector2(0, -24)
+
+[node name="Special" type="Node2D" parent="Weapons" unique_id=1266052461]
+visible = false
+rotation = -1.5707964
+scale = Vector2(0.3, 0.3)
+
+[node name="SharpPart" type="Polygon2D" parent="Weapons/Special" unique_id=336950322]
+position = Vector2(69, -2)
+color = Color(2.454227, 2.454227, 2.454227, 1)
+polygon = PackedVector2Array(40, 8, -8, 8, -16, 4, -16, -4, 22, -4)
+
+[node name="Handle" type="Polygon2D" parent="Weapons/Special" unique_id=1953567206]
+position = Vector2(69, -2)
+color = Color(0.86663747, 0.510617, 0.47427702, 1)
+polygon = PackedVector2Array(-16, -4, -37, -4, -37, 4, -16, 4)

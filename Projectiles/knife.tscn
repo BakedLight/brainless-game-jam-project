@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://f88bjcuk1cki"]
+
+[ext_resource type="Texture2D" uid="uid://cfrujs78b84r0" path="res://Assets/Lights/Light circle.png" id="1_3ikni"]
+[ext_resource type="Script" uid="uid://bhef3mvtel06f" path="res://Projectiles/knife.gd" id="1_qdyf7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogq8d"]
+size = Vector2(56, 12)
+
+[node name="Knife" type="Area2D" unique_id=1847607536]
+collision_layer = 8
+collision_mask = 6
+script = ExtResource("1_qdyf7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=861839869]
+position = Vector2(12, 0)
+shape = SubResource("RectangleShape2D_ogq8d")
+
+[node name="SharpPart" type="Polygon2D" parent="." unique_id=1053216329]
+position = Vector2(0, -2)
+color = Color(2.454227, 2.454227, 2.454227, 1)
+polygon = PackedVector2Array(40, 8, -8, 8, -16, 4, -16, -4, 22, -4)
+
+[node name="Handle" type="Polygon2D" parent="." unique_id=1679265873]
+position = Vector2(0, -2)
+color = Color(0.86663747, 0.510617, 0.47427702, 1)
+polygon = PackedVector2Array(-16, -4, -37, -4, -37, 4, -16, 4)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1242989089]
+color = Color(1.8247963, 1.8247963, 1.8247963, 1)
+energy = 0.2
+texture = ExtResource("1_3ikni")
+texture_scale = 0.3
+
+[node name="LifeTime" type="Timer" parent="." unique_id=1696294538]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]

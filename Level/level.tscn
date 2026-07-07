@@ -1,0 +1,75 @@
+[gd_scene format=4 uid="uid://v2gyv0bhge4m"]
+
+[ext_resource type="Texture2D" uid="uid://dj4fpkqust5q5" path="res://icon.svg" id="1_qmtf6"]
+[ext_resource type="Script" uid="uid://fwiqv72ojlou" path="res://Level/level.gd" id="1_uawph"]
+[ext_resource type="PackedScene" uid="uid://b3tdri2rhvuhk" path="res://Player/player.tscn" id="2_uawph"]
+[ext_resource type="PackedScene" uid="uid://c48wgxkswuexv" path="res://Enemies/Shooter1/shooter_1.tscn" id="4_52x1o"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vonw3"]
+texture = ExtResource("1_qmtf6")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ogq8d"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_vonw3")
+
+[sub_resource type="Environment" id="Environment_vonw3"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 2.0
+glow_bloom = 0.6
+
+[sub_resource type="Curve2D" id="Curve2D_52x1o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 968, 319, 0, 0, 0, 0, 53, 315)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_iincs"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 968, 319, 0, 0, 0, 0, 502, 317)
+}
+point_count = 2
+
+[node name="level" type="Node2D" unique_id=1920901037]
+script = ExtResource("1_uawph")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=112924975]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAAAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_ogq8d")
+
+[node name="Player" parent="." unique_id=281525179 instance=ExtResource("2_uawph")]
+position = Vector2(467, 487)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=140615216]
+color = Color(0.40784314, 0.40784314, 0.40784314, 1)
+energy = 1.5
+blend_mode = 1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1573139059]
+environment = SubResource("Environment_vonw3")
+
+[node name="BulletContainer" type="Node2D" parent="." unique_id=1818759972]
+
+[node name="SpecialsContainer" type="Node2D" parent="." unique_id=1797236295]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=644287940]
+position = Vector2(12, 62)
+curve = SubResource("Curve2D_52x1o")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1063672469]
+position = Vector2(968, 319)
+rotation = -3.137221
+
+[node name="Shooter1" parent="Path2D/PathFollow2D" unique_id=1796150351 instance=ExtResource("4_52x1o")]
+
+[node name="Path2D2" type="Path2D" parent="." unique_id=407672688]
+position = Vector2(14, -60)
+curve = SubResource("Curve2D_iincs")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1800589274]
+position = Vector2(968, 319)
+rotation = -3.1373007
+
+[node name="Shooter1" parent="Path2D2/PathFollow2D" unique_id=1015433461 instance=ExtResource("4_52x1o")]

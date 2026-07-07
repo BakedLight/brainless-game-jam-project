@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c48wgxkswuexv"]
+
+[ext_resource type="Script" uid="uid://d0sjcs3evibi1" path="res://Enemies/Shooter1/shooter_1.gd" id="1_qr0wp"]
+[ext_resource type="Texture2D" uid="uid://cf2b5xlc80qet" path="res://Assets/Lights/Light circle 6.png" id="2_qr0wp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62gjs"]
+size = Vector2(96, 48)
+
+[node name="Shooter1" type="CharacterBody2D" unique_id=1796150351]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_qr0wp")
+
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=53080920]
+position = Vector2(-1.9073486e-06, -8.526513e-14)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_62gjs")
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=38789778]
+scale = Vector2(0.5, 2)
+color = Color(1.353256, 0.48899934, 0.5210043, 1)
+polygon = PackedVector2Array(-32, -24, 32, -24, 32, 24, -32, 24)
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1479588017]
+color = Color(1.269401, 0.40161073, 0.43662706, 1)
+polygon = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
+
+[node name="BulletPos" type="Marker2D" parent="." unique_id=156647529]
+position = Vector2(33, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=535738012]
+color = Color(1, 0.604649, 0.5535536, 1)
+energy = 0.8
+texture = ExtResource("2_qr0wp")
+texture_scale = 0.3
+
+[node name="VisualRange" type="Area2D" parent="." unique_id=616498778]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisualRange" unique_id=276536165]
+polygon = PackedVector2Array(0, -24, 0, 24, 256, 128, 256, -128)
+
+[node name="WallCheck" type="RayCast2D" parent="." unique_id=856073378]
+target_position = Vector2(256, 0)
