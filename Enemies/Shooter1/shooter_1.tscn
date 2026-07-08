@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c48wgxkswuexv"]
 
 [ext_resource type="Script" uid="uid://d0sjcs3evibi1" path="res://Enemies/Shooter1/shooter_1.gd" id="1_qr0wp"]
-[ext_resource type="Texture2D" uid="uid://cf2b5xlc80qet" path="res://Assets/Lights/Light circle 6.png" id="2_qr0wp"]
+[ext_resource type="Texture2D" uid="uid://bnlxbntpptrdb" path="res://Assets/Lights/Light Circle 4.png" id="2_qr0wp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62gjs"]
 size = Vector2(96, 48)

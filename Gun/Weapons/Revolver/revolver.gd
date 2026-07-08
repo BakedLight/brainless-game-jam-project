@@ -1,6 +1,8 @@
 extends Polygon2D
 
-@onready var fire_cooldown: Timer = $FireCooldown
+@export var fire_cooldown: float = 0.2
+
+#@onready var fire_cooldown: Timer = $FireCooldown
 
 var auto_shoot: bool = false
 
@@ -12,6 +14,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func _input(event: InputEvent) -> void:
-	fire_cooldown.start()
+#
+#func _input(event: InputEvent) -> void:
+	#if Input.is_action_just_pressed("shoot_main"):
+		#fire_cooldown.start()

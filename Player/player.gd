@@ -10,9 +10,13 @@ var current_speed:int = 300
 
 var current_special:String = "knife"
 
+var in_hand: String = "gun"
+
 var specials:Array = ["knife"]
 
 @onready var bullet_pos: Marker2D = $BulletPos
+@onready var weapon_switcher: AnimationPlayer = $Weapons/WeaponSwitcher
+@onready var revolver: Polygon2D = $Weapons/Revolver
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,6 +49,10 @@ func _input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("shoot_main"):
 		shoot.emit("bullet", bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
+		await get_tree().create_timer(revolver.fire_cooldown)
 	if Input.is_action_just_pressed("special"):
-		shoot.emit(current_special, bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
+		weapon_switcher.play("fade_gun_to_special")
+
+func throw_special():
+	shoot.emit(current_special, bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
 	
