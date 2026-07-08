@@ -11,3 +11,5 @@ script = ExtResource("1_00meh")
 [node name="FireCooldown" type="Timer" parent="." unique_id=268774569]
 wait_time = 0.2
 one_shot = true
+
+[connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]
