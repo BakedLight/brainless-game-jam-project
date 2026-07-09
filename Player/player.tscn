@@ -275,6 +275,7 @@ color = Color(0.1680183, 0.9977989, 0.24269372, 1)
 polygon = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
+zoom = Vector2(2, 2)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
 energy = 0.4

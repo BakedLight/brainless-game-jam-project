@@ -9,7 +9,7 @@ polygon = PackedVector2Array(35, 31, 30, 27, 30, 21, 35, 17, 69, 19, 69, 29)
 script = ExtResource("1_00meh")
 
 [node name="FireCooldown" type="Timer" parent="." unique_id=268774569]
-wait_time = 0.2
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]
