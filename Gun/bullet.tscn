@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cfrujs78b84r0" path="res://Assets/Lights/Light circle.png" id="2_gof56"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eg0p3"]
-radius = 6.0
-height = 28.0
+radius = 0.99999994
+height = 8.0
 
 [node name="bullet" type="Area2D" unique_id=475730039]
 modulate = Color(2.454227, 2.454227, 2.454227, 1)
@@ -14,19 +14,22 @@ collision_mask = 6
 script = ExtResource("1_xda6o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197552922]
+position = Vector2(-1, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_eg0p3")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1492918551]
-position = Vector2(16, 0)
+position = Vector2(2.3841858e-07, 0)
+scale = Vector2(0.2, 0.2)
 color = Color(0.52156866, 0.8352941, 1, 1)
+offset = Vector2(15.0000105, 0)
 polygon = PackedVector2Array(-40, 0, -16, -8, 0, 0, -16, 8)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1246207049]
 color = Color(0.52508664, 1, 0.90982777, 1)
 energy = 0.2
 texture = ExtResource("2_gof56")
-texture_scale = 0.3
+texture_scale = 0.05
 
 [node name="LifeTime" type="Timer" parent="." unique_id=2129019389]
 wait_time = 5.0

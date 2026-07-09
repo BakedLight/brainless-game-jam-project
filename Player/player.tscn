@@ -229,7 +229,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogq8d"]
-size = Vector2(96, 31.999996)
+size = Vector2(18.25, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=281525179]
 collision_mask = 54
@@ -261,26 +261,26 @@ color = Color(0.86663747, 0.510617, 0.47427702, 1)
 polygon = PackedVector2Array(-16, -4, -37, -4, -37, 4, -16, 4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=255355832]
-position = Vector2(2.3841858e-07, 0)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_ogq8d")
 
 [node name="Polygon2D2" type="Polygon2D" parent="." unique_id=1437679015]
-scale = Vector2(0.5, 2)
+scale = Vector2(0.2, 0.2)
 color = Color(0, 0.919682, 0.8665236, 1)
-polygon = PackedVector2Array(-32, -24, 32, -24, 32, 12, 32, 24, -32, 24)
+polygon = PackedVector2Array(-16, -48, 16, -48, 16, 48, -16, 48)
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=495894281]
+scale = Vector2(0.2, 0.2)
 color = Color(0.1680183, 0.9977989, 0.24269372, 1)
 polygon = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
-zoom = Vector2(2, 2)
+zoom = Vector2(5, 5)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
 energy = 0.4
 texture = ExtResource("3_gwnis")
-texture_scale = 1.5
+texture_scale = 0.2
 
 [node name="BulletPos" type="Marker2D" parent="." unique_id=1955019788]
-position = Vector2(57, 0)
+position = Vector2(17, 0)
