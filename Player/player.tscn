@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bljjh6iedwu14" path="res://Assets/Projectiles/Knife.png" id="3_k53q1"]
 [ext_resource type="Texture2D" uid="uid://wpwp6bylunxl" path="res://Assets/Player/player_static.png" id="4_gwnis"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogq8d"]
-size = Vector2(14, 6)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fhl08"]
+radius = 7.0
+height = 18.0
 
 [sub_resource type="Animation" id="Animation_k53q1"]
 length = 0.001
@@ -140,8 +141,9 @@ collision_mask = 54
 script = ExtResource("1_l8h54")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=255355832]
+position = Vector2(4, 0)
 rotation = 1.5707964
-shape = SubResource("RectangleShape2D_ogq8d")
+shape = SubResource("CapsuleShape2D_fhl08")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144462545]
 rotation = 1.5707964
@@ -167,7 +169,7 @@ rotation = 1.5707964
 texture = ExtResource("3_k53q1")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
-zoom = Vector2(3, 3)
+zoom = Vector2(7, 7)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
 energy = 0.4

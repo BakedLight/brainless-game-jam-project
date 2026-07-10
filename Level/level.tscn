@@ -147,4 +147,5 @@ rotation = -3.1373007
 [node name="Shooter1" parent="Path2D2/PathFollow2D" unique_id=1015433461 instance=ExtResource("4_52x1o")]
 
 [node name="Player" parent="." unique_id=281525179 instance=ExtResource("2_uawph")]
-position = Vector2(96, 96)
+position = Vector2(64, 248)
+rotation = -1.5707964
