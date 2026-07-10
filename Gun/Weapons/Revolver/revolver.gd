@@ -1,4 +1,4 @@
-extends Polygon2D
+extends Sprite2D
 
 signal cooldown_ended
 

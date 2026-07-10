@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://ct6df16lc2kd8"]
 
 [ext_resource type="Script" uid="uid://bbpbdthkafyoj" path="res://Gun/Weapons/Revolver/revolver.gd" id="1_00meh"]
+[ext_resource type="Texture2D" uid="uid://dll4w6r5hdp46" path="res://Assets/Projectiles/Revolver.png" id="1_s1mt2"]
 
-[node name="Revolver" type="Polygon2D" unique_id=1648468125]
-scale = Vector2(0.2, 0.2)
-color = Color(0.30980393, 0.30980393, 0.30980393, 1)
-offset = Vector2(-48, -24)
-polygon = PackedVector2Array(35, 31, 30, 27, 30, 21, 35, 17, 69, 19, 69, 29)
+[node name="Revolver" type="Sprite2D" unique_id=741212810]
+rotation = 1.5707964
+texture = ExtResource("1_s1mt2")
 script = ExtResource("1_00meh")
 
 [node name="FireCooldown" type="Timer" parent="." unique_id=268774569]

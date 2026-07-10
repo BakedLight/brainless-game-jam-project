@@ -3,168 +3,122 @@
 [ext_resource type="Script" uid="uid://tosl4485yfyb" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://ct6df16lc2kd8" path="res://Gun/Weapons/Revolver/revolver.tscn" id="3_btcbx"]
 [ext_resource type="Texture2D" uid="uid://bnlxbntpptrdb" path="res://Assets/Lights/Light Circle 4.png" id="3_gwnis"]
+[ext_resource type="Texture2D" uid="uid://bljjh6iedwu14" path="res://Assets/Projectiles/Knife.png" id="3_k53q1"]
 [ext_resource type="Texture2D" uid="uid://wpwp6bylunxl" path="res://Assets/Player/player_static.png" id="4_gwnis"]
 
-[sub_resource type="Animation" id="Animation_gwnis"]
-resource_name = "RESET"
-length = 0.00999999999999999
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogq8d"]
+size = Vector2(14, 6)
+
+[sub_resource type="Animation" id="Animation_k53q1"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Weapons/Special:scale")
+tracks/0/path = NodePath("Primary:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.3, 0.3)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapons/Special:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Weapons/Special:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Weapons/Special:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Weapons/Primary:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Weapons/Primary:scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Weapons/Primary:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Weapons/Primary:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Primary:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_btcbx"]
-resource_name = "fade_gun_to_special"
-length = 0.5
-step = 0.016666668
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Weapons/Special:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1998, 0.49949998),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [-1.5707964, 0.0, -1.5707964]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Weapons/Special:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1998, 0.49949998),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(1, 1), Vector2(0.3, 0.3)]
-}
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Weapons/Special:visible")
+tracks/2/path = NodePath("Special:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1998, 0.49949998),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true, false, false]
+"values": [false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Weapons/Special:modulate")
+tracks/3/path = NodePath("Special:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1998, 0.49949998),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gwnis"]
+resource_name = "gun_to_special"
+step = 0.016666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Primary:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Primary:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Special:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Special:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.3, 0.5, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".")
+tracks/4/path = NodePath("..")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.1998, 0.5),
+"times": PackedFloat32Array(0.6, 1),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -174,97 +128,43 @@ tracks/4/keys = {
 "method": &"can_shoot_now"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Weapons/Primary:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2004, 0.49949998),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0.0, 1.5707964, 0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Weapons/Primary:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.2004, 0.49949998),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.2, 0.2), Vector2(1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Weapons/Primary:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.16706666, 0.2004, 0.23373333, 0.49949998),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.51900005), Color(1, 1, 1, 1), Color(1, 1, 1, 0.51900005), Color(1, 1, 1, 1)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Weapons/Primary:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.16039997, 0.23373333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwnis"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k53q1"]
 _data = {
-&"RESET": SubResource("Animation_gwnis"),
-&"fade_gun_to_special": SubResource("Animation_btcbx")
+&"RESET": SubResource("Animation_k53q1"),
+&"gun_to_special": SubResource("Animation_gwnis")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogq8d"]
-size = Vector2(18.25, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=281525179]
 collision_mask = 54
 script = ExtResource("1_l8h54")
 
-[node name="Weapons" type="Node2D" parent="." unique_id=1885392985]
-
-[node name="WeaponSwitcher" type="AnimationPlayer" parent="Weapons" unique_id=636948241]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_gwnis")
-
-[node name="Primary" type="Node2D" parent="Weapons" unique_id=973871985]
-
-[node name="Revolver" parent="Weapons/Primary" unique_id=1648468125 instance=ExtResource("3_btcbx")]
-visible = false
-offset = Vector2(0, -24)
-
-[node name="Special" type="Node2D" parent="Weapons" unique_id=1266052461]
-visible = false
-scale = Vector2(0.3, 0.3)
-
-[node name="SharpPart" type="Polygon2D" parent="Weapons/Special" unique_id=336950322]
-position = Vector2(69, -2)
-color = Color(2.454227, 2.454227, 2.454227, 1)
-polygon = PackedVector2Array(40, 8, -8, 8, -16, 4, -16, -4, 22, -4)
-
-[node name="Handle" type="Polygon2D" parent="Weapons/Special" unique_id=1953567206]
-position = Vector2(69, -2)
-color = Color(0.86663747, 0.510617, 0.47427702, 1)
-polygon = PackedVector2Array(-16, -4, -37, -4, -37, 4, -16, 4)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=255355832]
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_ogq8d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144462545]
+rotation = 1.5707964
+texture = ExtResource("4_gwnis")
+
+[node name="Weapons" type="Node2D" parent="." unique_id=1885392985]
+
+[node name="WeaponSwitcher" type="AnimationPlayer" parent="Weapons" unique_id=2050991963]
+libraries/ = SubResource("AnimationLibrary_k53q1")
+
+[node name="Primary" type="Node2D" parent="Weapons" unique_id=973871985]
+
+[node name="Revolver" parent="Weapons/Primary" unique_id=741212810 instance=ExtResource("3_btcbx")]
+position = Vector2(8, 0)
+
+[node name="Special" type="Node2D" parent="Weapons" unique_id=1266052461]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/Special" unique_id=923040542]
+position = Vector2(10.666666, 0)
+rotation = 1.5707964
+texture = ExtResource("3_k53q1")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
 zoom = Vector2(5, 5)
@@ -275,8 +175,4 @@ texture = ExtResource("3_gwnis")
 texture_scale = 0.2
 
 [node name="BulletPos" type="Marker2D" parent="." unique_id=1955019788]
-position = Vector2(17, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144462545]
-rotation = 1.5707964
-texture = ExtResource("4_gwnis")
+position = Vector2(14, 0)
