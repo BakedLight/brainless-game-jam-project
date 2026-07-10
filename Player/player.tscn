@@ -167,7 +167,7 @@ rotation = 1.5707964
 texture = ExtResource("3_k53q1")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
-zoom = Vector2(5, 5)
+zoom = Vector2(3, 3)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
 energy = 0.4
