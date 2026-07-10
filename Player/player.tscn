@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://tosl4485yfyb" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://ct6df16lc2kd8" path="res://Gun/Weapons/Revolver/revolver.tscn" id="3_btcbx"]
 [ext_resource type="Texture2D" uid="uid://bnlxbntpptrdb" path="res://Assets/Lights/Light Circle 4.png" id="3_gwnis"]
+[ext_resource type="Texture2D" uid="uid://wpwp6bylunxl" path="res://Assets/Player/player_static.png" id="4_gwnis"]
 
 [sub_resource type="Animation" id="Animation_gwnis"]
 resource_name = "RESET"
@@ -244,6 +245,7 @@ libraries/ = SubResource("AnimationLibrary_gwnis")
 [node name="Primary" type="Node2D" parent="Weapons" unique_id=973871985]
 
 [node name="Revolver" parent="Weapons/Primary" unique_id=1648468125 instance=ExtResource("3_btcbx")]
+visible = false
 offset = Vector2(0, -24)
 
 [node name="Special" type="Node2D" parent="Weapons" unique_id=1266052461]
@@ -264,16 +266,6 @@ polygon = PackedVector2Array(-16, -4, -37, -4, -37, 4, -16, 4)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_ogq8d")
 
-[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=1437679015]
-scale = Vector2(0.2, 0.2)
-color = Color(0, 0.919682, 0.8665236, 1)
-polygon = PackedVector2Array(-16, -48, 16, -48, 16, 48, -16, 48)
-
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=495894281]
-scale = Vector2(0.2, 0.2)
-color = Color(0.1680183, 0.9977989, 0.24269372, 1)
-polygon = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
 zoom = Vector2(5, 5)
 
@@ -284,3 +276,7 @@ texture_scale = 0.2
 
 [node name="BulletPos" type="Marker2D" parent="." unique_id=1955019788]
 position = Vector2(17, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144462545]
+rotation = 1.5707964
+texture = ExtResource("4_gwnis")

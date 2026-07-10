@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction: Vector2 = Vector2.UP
-@export var speed: int = 1500
+@export var speed: int = 500
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
