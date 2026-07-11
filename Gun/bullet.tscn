@@ -4,9 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cfrujs78b84r0" path="res://Assets/Lights/Light circle.png" id="2_gof56"]
 [ext_resource type="Texture2D" uid="uid://bpske3wvvqkp2" path="res://Assets/Projectiles/Bullet.png" id="3_5v6o7"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5v6o7"]
-radius = 2.0
-height = 10.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5v6o7"]
+size = Vector2(4, 8)
 
 [node name="bullet" type="Area2D" unique_id=475730039]
 modulate = Color(1.353256, 1.353256, 1.353256, 1)
@@ -15,8 +14,9 @@ collision_mask = 6
 script = ExtResource("1_xda6o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1197552922]
+position = Vector2(0, -2.6226832e-07)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_5v6o7")
+shape = SubResource("RectangleShape2D_5v6o7")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1246207049]
 color = Color(0.52508664, 1, 0.90982777, 1)
@@ -32,6 +32,8 @@ texture = ExtResource("3_5v6o7")
 wait_time = 5.0
 one_shot = true
 autostart = true
+
+[node name="FuturePredictor" type="RayCast2D" parent="." unique_id=582617220]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
