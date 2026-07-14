@@ -88,17 +88,11 @@ glow_enabled = true
 glow_intensity = 1.5
 glow_bloom = 0.3
 
-[sub_resource type="Curve2D" id="Curve2D_52x1o"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 968, 319, 0, 0, 0, 0, 53, 315)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_iincs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 968, 319, 0, 0, 0, 0, 502, 317)
+"points": PackedVector2Array(0, 0, 0, 0, 208, 168, 0, 0, 0, 0, 32, 168, 0, 0, 0, 0, 208, 168)
 }
-point_count = 2
+point_count = 3
 
 [node name="level" type="Node2D" unique_id=1920901037]
 script = ExtResource("1_uawph")
@@ -124,26 +118,18 @@ environment = SubResource("Environment_vonw3")
 
 [node name="SpecialsContainer" type="Node2D" parent="." unique_id=1797236295]
 
-[node name="Path2D" type="Path2D" parent="." unique_id=644287940]
-position = Vector2(12, 62)
-curve = SubResource("Curve2D_52x1o")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1063672469]
-position = Vector2(968, 319)
-rotation = -3.137221
-
-[node name="Shooter1" parent="Path2D/PathFollow2D" unique_id=1796150351 instance=ExtResource("4_52x1o")]
-
-[node name="Path2D2" type="Path2D" parent="." unique_id=407672688]
-position = Vector2(14, -60)
-curve = SubResource("Curve2D_iincs")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1800589274]
-position = Vector2(968, 319)
-rotation = -3.1373007
-
-[node name="Shooter1" parent="Path2D2/PathFollow2D" unique_id=1015433461 instance=ExtResource("4_52x1o")]
-
 [node name="Player" parent="." unique_id=281525179 instance=ExtResource("2_uawph")]
 position = Vector2(64, 248)
 rotation = -1.5707964
+
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=259345121]
+
+[node name="Path2D" type="Path2D" parent="EnemyContainer" unique_id=326577610]
+curve = SubResource("Curve2D_iincs")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyContainer/Path2D" unique_id=1689098882]
+position = Vector2(208, 168)
+rotation = 3.1415927
+rotates = false
+
+[node name="Shooter1" parent="EnemyContainer/Path2D/PathFollow2D" unique_id=1796150351 instance=ExtResource("4_52x1o")]
