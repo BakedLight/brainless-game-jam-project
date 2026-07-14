@@ -125,7 +125,6 @@ environment = SubResource("Environment_vonw3")
 [node name="SpecialsContainer" type="Node2D" parent="." unique_id=1797236295]
 
 [node name="Path2D" type="Path2D" parent="." unique_id=644287940]
-visible = false
 position = Vector2(12, 62)
 curve = SubResource("Curve2D_52x1o")
 
@@ -136,7 +135,6 @@ rotation = -3.137221
 [node name="Shooter1" parent="Path2D/PathFollow2D" unique_id=1796150351 instance=ExtResource("4_52x1o")]
 
 [node name="Path2D2" type="Path2D" parent="." unique_id=407672688]
-visible = false
 position = Vector2(14, -60)
 curve = SubResource("Curve2D_iincs")
 
