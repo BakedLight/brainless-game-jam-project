@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://byf1ucxolfl83"]
+
+[ext_resource type="Texture2D" uid="uid://bljjh6iedwu14" path="res://Assets/Projectiles/Knife.png" id="1_yeaa2"]
+[ext_resource type="Script" uid="uid://bjbsamgij6dyr" path="res://Gun/Weapons/KnifeHolder/knife.gd" id="2_n10w6"]
+
+[node name="KnifeHolder" type="Sprite2D" unique_id=1694094518]
+rotation = 1.5707964
+texture = ExtResource("1_yeaa2")
+script = ExtResource("2_n10w6")

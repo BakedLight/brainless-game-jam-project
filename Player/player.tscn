@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://tosl4485yfyb" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://ct6df16lc2kd8" path="res://Gun/Weapons/Revolver/revolver.tscn" id="3_btcbx"]
 [ext_resource type="Texture2D" uid="uid://bnlxbntpptrdb" path="res://Assets/Lights/Light Circle 4.png" id="3_gwnis"]
-[ext_resource type="Texture2D" uid="uid://bljjh6iedwu14" path="res://Assets/Projectiles/Knife.png" id="3_k53q1"]
 [ext_resource type="Texture2D" uid="uid://wpwp6bylunxl" path="res://Assets/Player/player_static.png" id="4_gwnis"]
+[ext_resource type="PackedScene" uid="uid://byf1ucxolfl83" path="res://Gun/Weapons/KnifeHolder/Knife.tscn" id="4_k53q1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fhl08"]
 radius = 7.0
@@ -163,10 +163,8 @@ position = Vector2(8, 0)
 visible = false
 modulate = Color(1, 1, 1, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Weapons/Special" unique_id=923040542]
+[node name="KnifeHolder" parent="Weapons/Special" unique_id=1694094518 instance=ExtResource("4_k53q1")]
 position = Vector2(10.666666, 0)
-rotation = 1.5707964
-texture = ExtResource("3_k53q1")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
 zoom = Vector2(7, 7)

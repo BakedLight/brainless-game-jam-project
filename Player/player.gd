@@ -19,11 +19,13 @@ var specials:Array = ["knife"]
 @onready var weapon_switcher: AnimationPlayer = $Weapons/WeaponSwitcher
 @onready var revolver: Sprite2D = $Weapons/Primary/Revolver
 @onready var primary: Node2D = $Weapons/Primary
+@onready var main_weapon = primary.get_child(0)
+@onready var knife_holder: Sprite2D = $Weapons/Special/KnifeHolder
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	look_at(direction)
-	primary.get_child(0).cooldown_ended.connect(can_shoot_now)
+	main_weapon.cooldown_ended.connect(can_shoot_now)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -34,15 +36,15 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("shoot_main"):
 		if can_shoot:
-			if primary.get_child(0).auto_shoot:
+			if main_weapon.auto_shoot:
 				shoot.emit("bullet", bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
 				can_shoot = false
-				primary.get_child(0).fire_cooldown.start()
+				main_weapon.fire_cooldown.start()
 			else:
 				if Input.is_action_just_pressed("shoot_main"):
 					shoot.emit("bullet", bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
 					can_shoot = false
-					primary.get_child(0).fire_cooldown.start()
+					main_weapon.fire_cooldown.start()
 
 func _input(_event: InputEvent) -> void:
 	direction = Vector2.ZERO
@@ -62,11 +64,12 @@ func _input(_event: InputEvent) -> void:
 		current_speed = normal_speeed
 	 
 	if Input.is_action_just_pressed("special"):
-		primary.get_child(0).fire_cooldown.stop()
+		main_weapon.fire_cooldown.stop()
 		can_shoot = false
 		weapon_switcher.play("gun_to_special")
 
 func throw_special():
+	Globals.current_weapon_damage = knife_holder.damage
 	shoot.emit(current_special, bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
 	
 func can_shoot_now():
