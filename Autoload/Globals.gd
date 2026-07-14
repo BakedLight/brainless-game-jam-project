@@ -1,11 +1,7 @@
-extends Sprite2D
+extends Node
 
-signal cooldown_ended
-
-@onready var fire_cooldown: Timer = $FireCooldown
-
-@export var auto_shoot: bool = true
-@export var damage:int = 10
+var damage_cooldown: float = 0.2
+var current_weapon_damage: int = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +11,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-
-
-func _on_fire_cooldown_timeout() -> void:
-	cooldown_ended.emit()

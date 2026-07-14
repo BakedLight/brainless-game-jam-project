@@ -2,42 +2,55 @@
 
 [ext_resource type="Script" uid="uid://d0sjcs3evibi1" path="res://Enemies/Shooter1/shooter_1.gd" id="1_qr0wp"]
 [ext_resource type="Texture2D" uid="uid://bnlxbntpptrdb" path="res://Assets/Lights/Light Circle 4.png" id="2_qr0wp"]
+[ext_resource type="Texture2D" uid="uid://cn8puqxmxoase" path="res://Assets/Enemies/enemy_shooter.png" id="2_tloh8"]
+[ext_resource type="Texture2D" uid="uid://dinodcw2xaqhj" path="res://Assets/Enemies/Enemy health bar/Under.png" id="4_t3js6"]
+[ext_resource type="Texture2D" uid="uid://cpv8rqyiqicv2" path="res://Assets/Enemies/Enemy health bar/Over.png" id="5_15l1u"]
+[ext_resource type="Texture2D" uid="uid://cfn38ur4wk2t0" path="res://Assets/Enemies/Enemy health bar/Progress.png" id="6_k3jrl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_62gjs"]
-size = Vector2(96, 48)
+[sub_resource type="CircleShape2D" id="CircleShape2D_c7iwb"]
+radius = 8.062258
 
-[node name="Shooter1" type="CharacterBody2D" unique_id=1796150351]
+[node name="Shooter1" type="CharacterBody2D" unique_id=1796150351 groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_qr0wp")
 
-[node name="HitBox" type="CollisionShape2D" parent="." unique_id=53080920]
-position = Vector2(-1.9073486e-06, -8.526513e-14)
-rotation = 1.5707964
-shape = SubResource("RectangleShape2D_62gjs")
-
-[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=38789778]
-scale = Vector2(0.5, 2)
-color = Color(1.353256, 0.48899934, 0.5210043, 1)
-polygon = PackedVector2Array(-32, -24, 32, -24, 32, 24, -32, 24)
-
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1479588017]
-color = Color(1.269401, 0.40161073, 0.43662706, 1)
-polygon = PackedVector2Array(-24, -24, 24, -24, 24, 24, -24, 24)
-
-[node name="BulletPos" type="Marker2D" parent="." unique_id=156647529]
-position = Vector2(33, 0)
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=535738012]
-color = Color(1, 0.604649, 0.5535536, 1)
-energy = 0.8
-texture = ExtResource("2_qr0wp")
-texture_scale = 0.3
-
 [node name="VisualRange" type="Area2D" parent="." unique_id=616498778]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisualRange" unique_id=276536165]
-polygon = PackedVector2Array(0, -24, 0, 24, 256, 128, 256, -128)
+polygon = PackedVector2Array(0, -8, 0, 8, 128, 64, 128, -64)
 
-[node name="WallCheck" type="RayCast2D" parent="." unique_id=856073378]
-target_position = Vector2(256, 0)
+[node name="HitBox" type="CollisionShape2D" parent="." unique_id=53080920]
+position = Vector2(4, -1)
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_c7iwb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=319973623]
+rotation = 1.5707964
+texture = ExtResource("2_tloh8")
+
+[node name="BulletPos" type="Marker2D" parent="." unique_id=156647529]
+position = Vector2(16, 0)
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=535738012]
+position = Vector2(5, 0)
+color = Color(1, 0.604649, 0.5535536, 1)
+energy = 0.8
+texture = ExtResource("2_qr0wp")
+texture_scale = 0.1
+
+[node name="ProgressBar Anchor" type="Node2D" parent="." unique_id=1327156329]
+top_level = true
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ProgressBar Anchor" unique_id=1135179668]
+offset_left = -8.0
+offset_top = -14.0
+offset_right = 8.0
+offset_bottom = -10.0
+value = 50.0
+texture_under = ExtResource("4_t3js6")
+texture_over = ExtResource("5_15l1u")
+texture_progress = ExtResource("6_k3jrl")
+tint_under = Color(0, 0.8797844, 0.97633153, 1)
+tint_over = Color(0.5535536, 0, 0.47312066, 1)
+tint_progress = Color(1, 0.48452926, 0.543951, 1)

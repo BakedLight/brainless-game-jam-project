@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5uypoeoyq0f3"
-path="res://.godot/imported/chasm-1x.png-5c220ef127ae93e113098bca233a599d.ctex"
+uid="uid://wpwp6bylunxl"
+path="res://.godot/imported/player_static.png-6250f0c3aa79924ae74cd0d5faf115d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Pallet/chasm-1x.png"
-dest_files=["res://.godot/imported/chasm-1x.png-5c220ef127ae93e113098bca233a599d.ctex"]
+source_file="res://Assets/Player/player_static.png"
+dest_files=["res://.godot/imported/player_static.png-6250f0c3aa79924ae74cd0d5faf115d6.ctex"]
 
 [params]
 

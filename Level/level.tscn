@@ -9,43 +9,77 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nk1il"]
 texture = ExtResource("2_iincs")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -3, 8, -3, 8, 3, 3, 3, 3, 8, -3, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 3, -8, 3)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -3, -8, -3, -8, 3, -3, 3, -3, 8, 3, 8)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -3, -3, 8, 3, 8, 3, -3)
 4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -3, 8, 3, 3, 3.005157, 3, 8, -3, 8, -3, 2.923936, -8, 3, -8, -3)
 5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 3, -8, 3, -8, -3, 3, -3)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 3, -8, 3, 8, -3, 8)
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -3, 3, -3, 3, 3, -3, 3)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, -8, 3, -8, 3, 8, -3, 8)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 8, 3, 8, 3.005157, 3, 8, 3, 8, -3, 2.923936, -3, 3, -8, -3, -8)
 4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -8, -3, -8, -3, -3, -8, -3, -8, 3, -3, 3, -3, 8, 3, 8, 3, 3, 8, 3, 8, -3, 3, -3)
 5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 8, -3, 8, -3.005157, 3, -8, 3, -8, -3, -2.923936, -3, -3, -8, 3, -8)
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 3, -3, -8, 3, -8, 3, -3, 8, -3, 8, 3)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -3, 8, -3, 8, 3, -8, 3)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 3, -8, 3, -8, -3, -3, -3, -3, -8, 3, -8)
 3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 3, 8, 3, 8, -3, -3, -3)
 4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 3, 8, -3, 3, -3.005157, 3, -8, -3, -8, -3, -2.923936, -8, -3, -8, 3)
 5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-3, 3, -3, -8, 3, -8, 3, 3)
 
 [sub_resource type="TileSet" id="TileSet_22cqp"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 29
 sources/0 = SubResource("TileSetAtlasSource_nk1il")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d6qko"]
 texture = ExtResource("3_iincs")
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_d6qko"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 29
 sources/0 = SubResource("TileSetAtlasSource_d6qko")
 
 [sub_resource type="Environment" id="Environment_vonw3"]
@@ -54,17 +88,11 @@ glow_enabled = true
 glow_intensity = 1.5
 glow_bloom = 0.3
 
-[sub_resource type="Curve2D" id="Curve2D_52x1o"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 968, 319, 0, 0, 0, 0, 53, 315)
-}
-point_count = 2
-
 [sub_resource type="Curve2D" id="Curve2D_iincs"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 968, 319, 0, 0, 0, 0, 502, 317)
+"points": PackedVector2Array(0, 0, 0, 0, 208, 168, 0, 0, 0, 0, 32, 168, 0, 0, 0, 0, 208, 168)
 }
-point_count = 2
+point_count = 3
 
 [node name="level" type="Node2D" unique_id=1920901037]
 script = ExtResource("1_uawph")
@@ -76,10 +104,6 @@ tile_set = SubResource("TileSet_22cqp")
 [node name="OuterWalls" type="TileMapLayer" parent="." unique_id=112924975]
 tile_map_data = PackedByteArray("AAABAAAAAAACAAAAAAACAAAAAAABAAAAAAADAAAAAAACAAAAAAAEAAAAAAABAAAAAAAFAAAAAAACAAAAAAAGAAAAAAABAAAAAAAHAAAAAAACAAAAAAAIAAAAAAABAAAAAAAJAAAAAAACAAAAAAAKAAAAAAABAAAAAAALAAAAAAACAAAAAAAMAAAAAAABAAAAAAANAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAOAAAAAAADAAAAAAAOAAEAAAADAAEAAAAOAAIAAAADAAIAAAAOAAMAAAADAAEAAAAAAAEAAAAAAAEAAAAAAAIAAAAAAAIAAAAAAAMAAAAAAAEAAAAAAAcAAAAAAAIAAAAAAAgAAAAAAAEAAAAAAAkAAAAAAAIAAAAAAAoAAAAAAAEAAAAAAAsAAAAAAAIAAAAAAAwAAAAAAAEAAAAAAA0AAAAAAAIAAAAHAAwAAAAAAAAAAAAHAA0AAAAAAAEAAAAOAAcAAAADAAIAAAAOAAgAAAADAAEAAAAOAAkAAAADAAIAAAAAAA4AAAAAAAEAAAAAAA8AAAAAAAIAAAAAABAAAAAAAAMAAAABABAAAAABAAMAAAACABAAAAACAAMAAAADABAAAAABAAMAAAAEABAAAAACAAMAAAAFABAAAAABAAMAAAAGABAAAAACAAMAAAAHAA4AAAAAAAIAAAAHAA8AAAAAAAEAAAAHABAAAAADAAMAAAAIAAwAAAACAAMAAAAJAAwAAAABAAMAAAAKAAwAAAACAAMAAAALAAwAAAABAAMAAAAMAAwAAAACAAMAAAANAAwAAAABAAMAAAAOAAoAAAADAAEAAAAOAAsAAAAAAAEAAAAOAAwAAAADAAMAAAAOAAUAAAADAAEAAAAOAAYAAAADAAIAAAAOAAQAAAADAAIAAAAAAAQAAAAAAAIAAAAAAAUAAAAAAAEAAAAAAAYAAAAAAAIAAAA=")
 tile_set = SubResource("TileSet_d6qko")
-
-[node name="Player" parent="." unique_id=281525179 instance=ExtResource("2_uawph")]
-visible = false
-position = Vector2(78, 110)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=140615216]
 visible = false
@@ -94,24 +118,18 @@ environment = SubResource("Environment_vonw3")
 
 [node name="SpecialsContainer" type="Node2D" parent="." unique_id=1797236295]
 
-[node name="Path2D" type="Path2D" parent="." unique_id=644287940]
-visible = false
-position = Vector2(12, 62)
-curve = SubResource("Curve2D_52x1o")
+[node name="Player" parent="." unique_id=281525179 instance=ExtResource("2_uawph")]
+position = Vector2(64, 248)
+rotation = -1.5707964
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1063672469]
-position = Vector2(968, 319)
-rotation = -3.137221
+[node name="EnemyContainer" type="Node2D" parent="." unique_id=259345121]
 
-[node name="Shooter1" parent="Path2D/PathFollow2D" unique_id=1796150351 instance=ExtResource("4_52x1o")]
-
-[node name="Path2D2" type="Path2D" parent="." unique_id=407672688]
-visible = false
-position = Vector2(14, -60)
+[node name="Path2D" type="Path2D" parent="EnemyContainer" unique_id=326577610]
 curve = SubResource("Curve2D_iincs")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1800589274]
-position = Vector2(968, 319)
-rotation = -3.1373007
+[node name="PathFollow2D" type="PathFollow2D" parent="EnemyContainer/Path2D" unique_id=1689098882]
+position = Vector2(208, 168)
+rotation = 3.1415927
+rotates = false
 
-[node name="Shooter1" parent="Path2D2/PathFollow2D" unique_id=1015433461 instance=ExtResource("4_52x1o")]
+[node name="Shooter1" parent="EnemyContainer/Path2D/PathFollow2D" unique_id=1796150351 instance=ExtResource("4_52x1o")]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5uypoeoyq0f3"
-path="res://.godot/imported/chasm-1x.png-5c220ef127ae93e113098bca233a599d.ctex"
+uid="uid://cn8puqxmxoase"
+path="res://.godot/imported/enemy_shooter.png-e8627772c83c8f11a3845875b8fb4104.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Pallet/chasm-1x.png"
-dest_files=["res://.godot/imported/chasm-1x.png-5c220ef127ae93e113098bca233a599d.ctex"]
+source_file="res://Assets/Enemies/enemy_shooter.png"
+dest_files=["res://.godot/imported/enemy_shooter.png-e8627772c83c8f11a3845875b8fb4104.ctex"]
 
 [params]
 
