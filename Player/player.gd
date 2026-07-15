@@ -4,7 +4,7 @@ signal shoot(object, pos, dir)
 
 var direction: Vector2 = Vector2.ZERO
 @export var normal_speeed: int = 75
-@export var sprint_speed: int = 150
+@export var sprint_speed: int = 120
 
 var current_speed:int = 50
 

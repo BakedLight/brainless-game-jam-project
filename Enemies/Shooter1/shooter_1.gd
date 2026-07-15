@@ -16,7 +16,7 @@ var health_tween: Tween
 var petrol_distance = 0
 @export var petrol_speed: int = 40
 @export var turn_time: float = 0.2
-@export var health: int = 50
+@export var health: int = 20
 
 @onready var path_follow = $".."
 @onready var path_2d: Path2D = $"../.."
