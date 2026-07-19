@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 enum States {
 	PETROLLING,
-	FINDING_PLAYER,
+	HUNTING_PLAYER,
+	REACHING_PLAYER,
 	SHOOTING,
 	HURT,
 	DYING
@@ -22,6 +23,7 @@ var petrol_distance = 0
 @onready var path_2d: Path2D = $"../.."
 @onready var progress_bar_anchor: Node2D = $"ProgressBar Anchor"
 @onready var texture_progress_bar: TextureProgressBar = $"ProgressBar Anchor/TextureProgressBar"
+@onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -77,13 +79,16 @@ func _process(_delta: float) -> void:
 				rotation_degrees = 0
 				rotation_tween.kill()
 			
+		States.REACHING_PLAYER:
+			pass
+			
 		States.HURT:
 			is_tweening = false
 			if translation_tween: translation_tween.pause()
 			if rotation_tween: rotation_tween.pause()
 			# Wait for the damage cooldown before returning to the previous state
 			await get_tree().create_timer(Globals.damage_cooldown).timeout
-			current_state = States.FINDING_PLAYER
+			current_state = States.REACHING_PLAYER
 		
 		States.DYING:
 			die()
