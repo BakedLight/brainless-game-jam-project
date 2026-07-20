@@ -29,6 +29,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	
+	Globals.player_pos = global_position
 	velocity = direction * current_speed
 	move_and_slide()
 	

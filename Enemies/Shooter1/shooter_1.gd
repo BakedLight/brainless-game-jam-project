@@ -16,6 +16,7 @@ var health_tween: Tween
 
 var petrol_distance = 0
 @export var petrol_speed: int = 40
+@export var chase_speed: int = 60
 @export var turn_time: float = 0.2
 @export var health: int = 20
 
@@ -24,6 +25,8 @@ var petrol_distance = 0
 @onready var progress_bar_anchor: Node2D = $"ProgressBar Anchor"
 @onready var texture_progress_bar: TextureProgressBar = $"ProgressBar Anchor/TextureProgressBar"
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var collision_check1 = $CollisionCheck1
+@onready var collision_check2 = $CollisionCheck2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -80,8 +83,22 @@ func _process(_delta: float) -> void:
 				rotation_tween.kill()
 			
 		States.REACHING_PLAYER:
-			pass
-			
+			if can_view():
+				current_state = States.SHOOTING
+			else:
+				navigation_agent.target_position = Globals.player_pos
+				#rotation_degrees = lerp(rotation_degrees, rad_to_deg(get_angle_to(navigation_agent.get_next_path_position())), 0.2)
+				velocity = global_position.direction_to(navigation_agent.get_next_path_position()).normalized() * chase_speed
+				rotation = lerp_angle(rotation, get_angle_to(navigation_agent.get_next_path_position()), 0.2)
+				move_and_slide()
+		
+		States.SHOOTING:
+			if can_view():
+				look_at(Globals.player_pos)
+				#rotation = lerp_angle(rotation, global_position.angle_to(Globals.player_pos), 0.5)
+			else:
+				current_state = States.REACHING_PLAYER
+		
 		States.HURT:
 			is_tweening = false
 			if translation_tween: translation_tween.pause()
@@ -108,3 +125,12 @@ func damage_taken(damage:int) -> void:
 func die() -> void:
 	# Handle death logic here
 	queue_free()
+
+func can_view() -> bool:
+	#collision_check.target_position = collision_check.target_position.lerp(to_local(Globals.player_pos), 0.2)
+	collision_check1.target_position = to_local(Vector2(Globals.player_pos.x, Globals.player_pos.y))
+	collision_check2.target_position = to_local(Vector2(Globals.player_pos.x, Globals.player_pos.y))
+	if collision_check1.is_colliding() or collision_check2.is_colliding():
+		return false
+	else:
+		return true

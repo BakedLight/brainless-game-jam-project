@@ -14,11 +14,22 @@ radius = 8.062258
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_qr0wp")
+health = 50
 
 [node name="VisualRange" type="Area2D" parent="." unique_id=616498778]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisualRange" unique_id=276536165]
 polygon = PackedVector2Array(0, -8, 0, 8, 128, 64, 128, -64)
+
+[node name="CollisionCheck1" type="RayCast2D" parent="." unique_id=455765975]
+position = Vector2(0, 4)
+target_position = Vector2(50, -4)
+collision_mask = 6
+
+[node name="CollisionCheck2" type="RayCast2D" parent="." unique_id=185497097]
+position = Vector2(0, -4)
+target_position = Vector2(50, 4)
+collision_mask = 6
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=53080920]
 position = Vector2(4, -1)
