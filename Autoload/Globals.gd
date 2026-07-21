@@ -3,6 +3,8 @@ extends Node
 var damage_cooldown: float = 0.2
 var current_weapon_damage: int = 10
 
+var player_pos: Vector2 = Vector2.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

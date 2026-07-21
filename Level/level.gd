@@ -22,7 +22,7 @@ func spawn_bullet(obj, pos, dir):
 			var bullet = bullet_scene.instantiate()
 			bullet.position = pos
 			bullet.direction = dir
-			bullet.look_at(get_global_mouse_position())
+			bullet.look_at(to_global(bullet.global_position + dir))
 			bullet_container.add_child(bullet)
 		"knife":
 			var knife = knife_scene.instantiate()
