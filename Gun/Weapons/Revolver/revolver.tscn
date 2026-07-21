@@ -2,6 +2,46 @@
 
 [ext_resource type="Script" uid="uid://bbpbdthkafyoj" path="res://Gun/Weapons/Revolver/revolver.gd" id="1_00meh"]
 [ext_resource type="Texture2D" uid="uid://dll4w6r5hdp46" path="res://Assets/Projectiles/Revolver.png" id="1_s1mt2"]
+[ext_resource type="Texture2D" uid="uid://cdygq8km7f8f8" path="res://Assets/Textures/MuzzelFlash.png" id="3_cxvtf"]
+
+[sub_resource type="Animation" id="Animation_s1mt2"]
+resource_name = "Shoot"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxvtf"]
+_data = {
+&"Shoot": SubResource("Animation_s1mt2")
+}
+
+[sub_resource type="Gradient" id="Gradient_i5c6h"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ogq8d"]
+gradient = SubResource("Gradient_i5c6h")
+fill = 1
+fill_from = Vector2(0.50341296, 0.49658704)
+fill_to = Vector2(0.8242321, 0.13481228)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cxvtf"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_i5c6h"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.05859375, 1), 0.0, 0.0, 0, 0, Vector2(0.1484375, 1), -0.03753662, -0.03753662, 0, 0, Vector2(0.30078125, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_cxvtf"]
+curve = SubResource("Curve_i5c6h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ogq8d"]
+particle_flag_disable_z = true
+angle_min = -89.99999
+angle_max = -89.99999
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_cxvtf")
+anim_offset_max = 1.0
 
 [node name="Revolver" type="Sprite2D" unique_id=741212810]
 rotation = 1.5707964
@@ -11,5 +51,26 @@ script = ExtResource("1_00meh")
 [node name="FireCooldown" type="Timer" parent="." unique_id=268774569]
 wait_time = 0.5
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=377569863]
+libraries/ = SubResource("AnimationLibrary_cxvtf")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1614816743]
+visible = false
+position = Vector2(0, -6)
+color = Color(1, 0.8494162, 0.28707156, 1)
+energy = 1.25
+texture = SubResource("GradientTexture2D_ogq8d")
+texture_scale = 0.5
+
+[node name="MuzzleFlash" type="GPUParticles2D" parent="." unique_id=951449335]
+material = SubResource("CanvasItemMaterial_cxvtf")
+position = Vector2(0, -6)
+emitting = false
+amount = 1
+texture = ExtResource("3_cxvtf")
+lifetime = 0.4
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_ogq8d")
 
 [connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]

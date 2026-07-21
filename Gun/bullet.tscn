@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://df5o2lq5g8i73"]
 
 [ext_resource type="Script" uid="uid://fd1ilwb1wyl8" path="res://Gun/bullet.gd" id="1_xda6o"]
-[ext_resource type="Texture2D" uid="uid://cfrujs78b84r0" path="res://Assets/Lights/Light circle.png" id="2_gof56"]
 [ext_resource type="Texture2D" uid="uid://bpske3wvvqkp2" path="res://Assets/Projectiles/Bullet.png" id="3_5v6o7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5v6o7"]
 size = Vector2(2.0000002, 6)
+
+[sub_resource type="Gradient" id="Gradient_gof56"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5v6o7"]
+gradient = SubResource("Gradient_gof56")
+fill = 1
+fill_from = Vector2(0.50341296, 0.48976108)
+fill_to = Vector2(0.86860067, 0.15870307)
 
 [node name="bullet" type="Area2D" unique_id=475730039]
 collision_layer = 8
@@ -20,12 +29,12 @@ shape = SubResource("RectangleShape2D_5v6o7")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1246207049]
 color = Color(1, 0.82040936, 0, 1)
-energy = 0.2
-texture = ExtResource("2_gof56")
-texture_scale = 0.05
+energy = 0.4
+texture = SubResource("GradientTexture2D_5v6o7")
+texture_scale = 0.8
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1025095218]
-modulate = Color(1.1638972, 1.1638972, 1.1638972, 1)
+modulate = Color(1.353256, 1.353256, 1.353256, 1)
 rotation = 1.5707964
 texture = ExtResource("3_5v6o7")
 
