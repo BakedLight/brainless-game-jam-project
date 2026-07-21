@@ -18,10 +18,22 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SparkParticles:local_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_s1mt2"]
 resource_name = "Shoot"
-length = 0.39999999999999997
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -47,6 +59,32 @@ tracks/1/keys = {
 "args": [false],
 "method": &"restart"
 }]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SparkParticles")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SparkParticles:local_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cxvtf"]
@@ -84,6 +122,43 @@ gravity = Vector3(0, 0, 0)
 alpha_curve = SubResource("CurveTexture_cxvtf")
 anim_offset_max = 1.0
 
+[sub_resource type="Curve" id="Curve_ef5nd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6015625, 1), 0.0, 0.0, 0, 0, Vector2(0.78515625, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ymbhq"]
+curve = SubResource("Curve_ef5nd")
+
+[sub_resource type="Gradient" id="Gradient_cxvtf"]
+offsets = PackedFloat32Array(0, 0.31614348, 0.56726456)
+colors = PackedColorArray(1.8247963, 1.8247963, 1.8247963, 1, 1.1593142, 1.1638972, 0.63135785, 1, 1, 0.6879359, 0.5563933, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cxvtf"]
+gradient = SubResource("Gradient_cxvtf")
+
+[sub_resource type="Curve" id="Curve_cxvtf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.734375, 0.49193555), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uuko3"]
+curve = SubResource("Curve_cxvtf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cxvtf"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -1.3, 0)
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 150.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+damping_min = 300.0
+damping_max = 350.00003
+scale_curve = SubResource("CurveTexture_uuko3")
+color_ramp = SubResource("GradientTexture1D_cxvtf")
+alpha_curve = SubResource("CurveTexture_ymbhq")
+
 [node name="Revolver" type="Sprite2D" unique_id=741212810]
 rotation = 1.5707964
 texture = ExtResource("1_s1mt2")
@@ -114,5 +189,16 @@ one_shot = true
 randomness = 0.48
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_ogq8d")
+
+[node name="SparkParticles" type="GPUParticles2D" parent="." unique_id=426435722]
+position = Vector2(0, -6)
+emitting = false
+amount = 4
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 0.71
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_cxvtf")
 
 [connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]
