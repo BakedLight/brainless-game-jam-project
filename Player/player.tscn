@@ -171,10 +171,18 @@ position = Vector2(10.666666, 0)
 zoom = Vector2(7, 7)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
-color = Color(1.2363764, 1.2363764, 1.2363764, 1)
+color = Color(1.2363764, 1.1676517, 1.0158488, 1)
 energy = 0.4
 texture = ExtResource("3_gwnis")
 texture_scale = 0.2
 
-[node name="BulletPos" type="Marker2D" parent="." unique_id=1955019788]
+[node name="BulletSpawners" type="Node2D" parent="." unique_id=1689949888]
+
+[node name="BulletPos" type="Marker2D" parent="BulletSpawners" unique_id=1955019788]
 position = Vector2(14, 0)
+
+[node name="BulletPos2" type="Marker2D" parent="BulletSpawners" unique_id=1888030824]
+position = Vector2(14, -1)
+
+[node name="BulletPos3" type="Marker2D" parent="BulletSpawners" unique_id=2045900796]
+position = Vector2(14, 1)

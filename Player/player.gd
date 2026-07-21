@@ -15,7 +15,8 @@ var can_shoot:bool = true
 
 var specials:Array = ["knife"]
 
-@onready var bullet_pos: Marker2D = $BulletPos
+@onready var bullet_positions: Array = $BulletSpawners.get_children()
+@onready var bullet_pos: Marker2D = $BulletSpawners/BulletPos
 @onready var weapon_switcher: AnimationPlayer = $Weapons/WeaponSwitcher
 @onready var revolver: Sprite2D = $Weapons/Primary/Revolver
 @onready var primary: Node2D = $Weapons/Primary
@@ -38,6 +39,9 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_pressed("shoot_main"):
 		if can_shoot:
+			var prev_bullet_pos = bullet_pos
+			while prev_bullet_pos == bullet_pos:
+				bullet_pos = bullet_positions[randi_range(0, bullet_positions.size() - 1)]
 			if main_weapon.auto_shoot:
 				shoot.emit("bullet", bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
 				can_shoot = false
