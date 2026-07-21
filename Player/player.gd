@@ -11,7 +11,7 @@ var current_speed:int = 50
 
 var current_special:String = "knife"
 
-var can_shoot:bool = true
+var can_shoot:bool = true	
 
 var specials:Array = ["knife"]
 
@@ -44,11 +44,13 @@ func _process(_delta: float) -> void:
 				bullet_pos = bullet_positions[randi_range(0, bullet_positions.size() - 1)]
 			if main_weapon.auto_shoot:
 				shoot.emit("bullet", bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
+				main_weapon.animation_player.play("Shoot")
 				can_shoot = false
 				main_weapon.fire_cooldown.start()
 			else:
 				if Input.is_action_just_pressed("shoot_main"):
 					shoot.emit("bullet", bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
+					main_weapon.animation_player.play("Shoot")
 					can_shoot = false
 					main_weapon.fire_cooldown.start()
 
