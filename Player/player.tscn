@@ -146,7 +146,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_fhl08")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144462545]
-modulate = Color(1.2363764, 1.2363764, 1.2363764, 1)
+modulate = Color(1.5720325, 1.5720325, 1.5720325, 1)
 rotation = 1.5707964
 texture = ExtResource("4_gwnis")
 
@@ -172,9 +172,9 @@ zoom = Vector2(7, 7)
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
 color = Color(1.2363764, 1.1676517, 1.0158488, 1)
-energy = 0.4
+energy = 0.2
 texture = ExtResource("3_gwnis")
-texture_scale = 0.2
+texture_scale = 0.1
 
 [node name="BulletSpawners" type="Node2D" parent="." unique_id=1689949888]
 

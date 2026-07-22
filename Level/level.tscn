@@ -203,7 +203,7 @@ tile_map_data = PackedByteArray("AAABAAAAAAACAAAAAAACAAAAAAABAAAAAAADAAAAAAACAAA
 tile_set = SubResource("TileSet_d6qko")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1638220452]
-color = Color(0.52906674, 0.52906674, 0.52906656, 1)
+color = Color(0.23031491, 0.23031494, 0.23031485, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=140615216]
 visible = false

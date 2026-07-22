@@ -7,11 +7,10 @@ var direction: Vector2 = Vector2.UP
 func _ready() -> void:
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	global_position += direction * speed * delta
-
+	
 
 func _on_life_time_timeout() -> void:
 	queue_free()
