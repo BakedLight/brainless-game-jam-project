@@ -6,15 +6,18 @@ var direction: Vector2 = Vector2.ZERO
 @export var normal_speeed: int = 80
 @export var sprint_speed: int = 120
 @export var acceleration: int = 15
-@export var rotation_acc: int = 10
+@export var rotation_speed: int = 7
 var current_speed:int = 50
 
 
 var current_special:String = "knife"
 
 var can_shoot:bool = true
-
 var specials:Array = ["knife"]
+
+var angle_to_rotate:float = 0.0
+var dir_to_mouse:Vector2 = Vector2.ZERO
+var correction_angle:float = -PI / 2
 
 @onready var bullet_positions: Array = $BulletSpawners.get_children()
 @onready var bullet_pos: Marker2D = $BulletSpawners/BulletPos
@@ -35,8 +38,11 @@ func _process(delta: float) -> void:
 	Globals.player_pos = global_position
 	velocity = lerp(velocity, direction * current_speed, acceleration * delta)
 	move_and_slide()
+
+	dir_to_mouse = get_global_mouse_position() - global_position
+	angle_to_rotate = (-atan2(dir_to_mouse.x, dir_to_mouse.y)) - correction_angle
 	
-	rotation_degrees = lerp(rotation_degrees, rad_to_deg(get_angle_to(get_global_mouse_position())), rotation_acc)
+	rotation = lerp_angle(rotation, angle_to_rotate, rotation_speed * delta)
 	
 	if Input.is_action_pressed("shoot_main"):
 		if can_shoot:
