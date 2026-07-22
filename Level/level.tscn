@@ -176,7 +176,7 @@ sources/0 = SubResource("TileSetAtlasSource_d6qko")
 [sub_resource type="Environment" id="Environment_vonw3"]
 background_mode = 3
 glow_enabled = true
-glow_intensity = 1.0
+glow_intensity = 1.2
 glow_bloom = 0.3
 
 [sub_resource type="Curve2D" id="Curve2D_iincs"]
@@ -203,7 +203,7 @@ tile_map_data = PackedByteArray("AAABAAAAAAACAAAAAAACAAAAAAABAAAAAAADAAAAAAACAAA
 tile_set = SubResource("TileSet_d6qko")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1638220452]
-color = Color(0.23031491, 0.23031494, 0.23031485, 1)
+color = Color(0.3553134, 0.3553136, 0.35531357, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=140615216]
 visible = false

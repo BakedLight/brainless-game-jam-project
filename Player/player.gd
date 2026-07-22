@@ -3,15 +3,16 @@ extends CharacterBody2D
 signal shoot(object, pos, dir)
 
 var direction: Vector2 = Vector2.ZERO
-@export var normal_speeed: int = 75
+@export var normal_speeed: int = 80
 @export var sprint_speed: int = 120
-
+@export var acceleration: int = 15
+@export var rotation_acc: int = 10
 var current_speed:int = 50
 
 
 var current_special:String = "knife"
 
-var can_shoot:bool = true	
+var can_shoot:bool = true
 
 var specials:Array = ["knife"]
 
@@ -29,13 +30,13 @@ func _ready() -> void:
 	main_weapon.cooldown_ended.connect(can_shoot_now)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	
 	Globals.player_pos = global_position
-	velocity = direction * current_speed
+	velocity = lerp(velocity, direction * current_speed, acceleration * delta)
 	move_and_slide()
 	
-	look_at(get_global_mouse_position())
+	rotation_degrees = lerp(rotation_degrees, rad_to_deg(get_angle_to(get_global_mouse_position())), rotation_acc)
 	
 	if Input.is_action_pressed("shoot_main"):
 		if can_shoot:
