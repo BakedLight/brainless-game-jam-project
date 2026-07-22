@@ -169,11 +169,12 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(10.666666, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
-zoom = Vector2(7, 7)
+zoom = Vector2(5, 5)
 position_smoothing_enabled = true
 position_smoothing_speed = 8.0
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
+
+[node name="ShakeTime" type="Timer" parent="Camera2D" unique_id=696031685]
+one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
 color = Color(1.2363764, 1.1676517, 1.0158488, 1)
@@ -191,3 +192,5 @@ position = Vector2(14, -1)
 
 [node name="BulletPos3" type="Marker2D" parent="BulletSpawners" unique_id=2045900796]
 position = Vector2(14, 1)
+
+[connection signal="timeout" from="Camera2D/ShakeTime" to="." method="_on_shake_time_timeout"]
