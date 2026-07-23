@@ -1,6 +1,6 @@
 extends Node
 
-var damage_cooldown: float = 0.2
+var damage_cooldown: float = 0.3
 var current_weapon_damage: int = 10
 
 var player_pos: Vector2 = Vector2.ZERO

@@ -20,13 +20,14 @@ var petrol_distance = 0
 @export var turn_time: float = 0.2
 @export var health: int = 20
 
-@onready var path_follow = $".."
+@onready var path_follow: PathFollow2D = $".."
 @onready var path_2d: Path2D = $"../.."
 @onready var progress_bar_anchor: Node2D = $"ProgressBar Anchor"
 @onready var texture_progress_bar: TextureProgressBar = $"ProgressBar Anchor/TextureProgressBar"
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
-@onready var collision_check1 = $CollisionCheck1
-@onready var collision_check2 = $CollisionCheck2
+@onready var collision_check1: RayCast2D = $CollisionCheck1
+@onready var collision_check2: RayCast2D = $CollisionCheck2
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -104,7 +105,8 @@ func _process(_delta: float) -> void:
 			if translation_tween: translation_tween.pause()
 			if rotation_tween: rotation_tween.pause()
 			# Wait for the damage cooldown before returning to the previous state
-			await get_tree().create_timer(Globals.damage_cooldown).timeout
+			animation_player.play("Blink")
+			await get_tree().create_timer(animation_player.current_animation_length).timeout
 			current_state = States.REACHING_PLAYER
 		
 		States.DYING:

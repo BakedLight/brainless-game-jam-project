@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c48wgxkswuexv"]
 
 [ext_resource type="Script" uid="uid://d0sjcs3evibi1" path="res://Enemies/Shooter1/shooter_1.gd" id="1_qr0wp"]
+[ext_resource type="Shader" uid="uid://d4dlk2670h13q" path="res://Shaders/enemy_blink.tres" id="2_15l1u"]
 [ext_resource type="Texture2D" uid="uid://bnlxbntpptrdb" path="res://Assets/Lights/Light Circle 4.png" id="2_qr0wp"]
 [ext_resource type="Texture2D" uid="uid://cn8puqxmxoase" path="res://Assets/Enemies/enemy_shooter.png" id="2_tloh8"]
 [ext_resource type="Texture2D" uid="uid://dinodcw2xaqhj" path="res://Assets/Enemies/Enemy health bar/Under.png" id="4_t3js6"]
@@ -9,6 +10,48 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c7iwb"]
 radius = 8.062258
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogq8d"]
+shader = ExtResource("2_15l1u")
+shader_parameter/FlashColour = Color(3.2944162, 2.9111016, 3.2944162, 1)
+shader_parameter/Amount = 0.0
+
+[sub_resource type="Animation" id="Animation_15l1u"]
+resource_name = "Blink"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_k3jrl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3jrl"]
+_data = {
+&"Blink": SubResource("Animation_15l1u"),
+&"RESET": SubResource("Animation_k3jrl")
+}
 
 [node name="Shooter1" type="CharacterBody2D" unique_id=1796150351 groups=["Enemies"]]
 collision_layer = 4
@@ -37,6 +80,7 @@ rotation = 1.5707964
 shape = SubResource("CircleShape2D_c7iwb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=319973623]
+material = SubResource("ShaderMaterial_ogq8d")
 rotation = 1.5707964
 texture = ExtResource("2_tloh8")
 
@@ -67,3 +111,6 @@ tint_over = Color(0.5535536, 0, 0.47312066, 1)
 tint_progress = Color(1, 0.48452926, 0.543951, 1)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1538409777]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=552055246]
+libraries/ = SubResource("AnimationLibrary_k3jrl")
