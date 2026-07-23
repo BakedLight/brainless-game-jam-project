@@ -48,6 +48,19 @@ var damping:float = 0.1
 @export var stretch_impact_time: float = 0.05
 @export var stretch_return_time: float = 0.2
 
+# Push Back General
+var pushing_back: bool = false
+var push_back_tween: Tween
+var pb_back_time: float
+var pb_forward_time: float
+var pb_intensity: float
+
+# Push Back Defaults
+@export_category("Push Back")
+@export var push_back_time: float = 0.05
+@export var come_forward_time: float = 0.2
+@export var push_back_intensity: float = 10
+
 # Node References
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var bullet_positions: Array = $BulletSpawners.get_children()
@@ -89,6 +102,7 @@ func _process(delta: float) -> void:
 				main_weapon.animation_player.play("Shoot")
 				camera_shake(small_shaketime, small_shake_frequency, small_shake_intensity, small_shake_damping)
 				squash_and_stretch("squash", squash_amount, squash_impact_time, squash_return_time)
+				offset_sprite(push_back_intensity, push_back_time, come_forward_time)
 				can_shoot = false
 				main_weapon.fire_cooldown.start()
 			else:
@@ -169,3 +183,17 @@ func squash_and_stretch (type, amount, impact_time, return_time):
 	squash_stretch_tween.set_ease(Tween.EASE_IN_OUT)
 	squash_stretch_tween.tween_property(sprite, "scale", val, impact_time)
 	squash_stretch_tween.tween_property(sprite, "scale", Vector2(1, 1), return_time)
+
+func offset_sprite(i, push_back_t, come_forward_t):
+	pb_back_time = push_back_t
+	pb_forward_time = come_forward_t
+	pb_intensity = i
+
+	var rand_x = randf_range(-pb_intensity, pb_intensity)
+	var equivalent_y = (dir_to_mouse.y/dir_to_mouse.x) * abs(rand_x)
+	equivalent_y = clamp(equivalent_y, -rand_x, rand_x)
+
+	if push_back_tween: push_back_tween.kill()
+	push_back_tween = sprite.create_tween()
+	push_back_tween.tween_property(sprite, "position",  sprite.position+Vector2(rand_x, equivalent_y), pb_back_time)
+	push_back_tween.tween_property(sprite, "position", Vector2.ZERO, pb_forward_time)
