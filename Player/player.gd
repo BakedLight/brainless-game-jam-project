@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 signal shoot(object, pos, dir)
 
+# Movement values
 var direction: Vector2 = Vector2.ZERO
-@export var normal_speeed: int = 80
+@export var normal_speeed: int = 90
+@export var speed_while_shooting: int = 60
 @export var sprint_speed: int = 120
-@export var acceleration: int = 15
+@export var acceleration: int = 10
 @export var rotation_speed: int = 7
 var current_speed:int = 50
 
@@ -20,7 +22,9 @@ var angle_to_rotate:float = 0.0
 var dir_to_mouse:Vector2 = Vector2.ZERO
 var correction_angle:float = -PI / 2
 
-#Camera Shake
+var squash_stretch_tween: Tween
+
+#Camera Shaken General
 var shaking_cam: bool = false
 var time: float = 0.5
 var intensity: float = 5.0
@@ -28,13 +32,31 @@ var frequency: int = 10
 var camera_tween: Tween
 var damping:float = 0.1
 
+# Camera Shake Defaults
+@export_category("Camera Shake Defaults")
+@export var small_shaketime: float = 0.2
+@export var small_shake_frequency: int = 10
+@export var small_shake_intensity: float = 1.5
+@export var small_shake_damping: float = 0.1
+
+# Squash And Stretch Defaults
+@export_category("Squash And Stretch Defaults")
+@export var squash_amount: float = 0.3
+@export var squash_impact_time: float = 0.05
+@export var squash_return_time: float = 0.2
+@export var stretch_amount: float = 0.3
+@export var stretch_impact_time: float = 0.05
+@export var stretch_return_time: float = 0.2
+
+# Node References
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var bullet_positions: Array = $BulletSpawners.get_children()
 @onready var bullet_pos: Marker2D = $BulletSpawners/BulletPos
-@onready var weapon_switcher: AnimationPlayer = $Weapons/WeaponSwitcher
-@onready var revolver: Sprite2D = $Weapons/Primary/Revolver
-@onready var primary: Node2D = $Weapons/Primary
+@onready var weapon_switcher: AnimationPlayer = $Sprite2D/Weapons/WeaponSwitcher
+@onready var revolver: Sprite2D = $Sprite2D/Weapons/Primary/Revolver
+@onready var primary: Node2D = $Sprite2D/Weapons/Primary
 @onready var main_weapon = primary.get_child(0)
-@onready var knife_holder: Sprite2D = $Weapons/Special/KnifeHolder
+@onready var knife_holder: Sprite2D = $Sprite2D/Weapons/Special/KnifeHolder
 @onready var camera_2d: Camera2D = $Camera2D
 @onready var shake_time: Timer = $Camera2D/ShakeTime
 
@@ -65,7 +87,8 @@ func _process(delta: float) -> void:
 			if main_weapon.auto_shoot:
 				shoot.emit("bullet", bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
 				main_weapon.animation_player.play("Shoot")
-				camera_shake(0.5, 10, 2, 0.1)
+				camera_shake(small_shaketime, small_shake_frequency, small_shake_intensity, small_shake_damping)
+				squash_and_stretch("squash", squash_amount, squash_impact_time, squash_return_time)
 				can_shoot = false
 				main_weapon.fire_cooldown.start()
 			else:
@@ -73,7 +96,8 @@ func _process(delta: float) -> void:
 					shoot.emit("bullet", bullet_pos.global_position, Vector2((get_global_mouse_position().x - global_position.x), (get_global_mouse_position().y - global_position.y)).normalized())
 					main_weapon.animation_player.play("Shoot")
 					can_shoot = false
-					camera_shake(0.5, 10, 2, 0.1)
+					camera_shake(small_shaketime, small_shake_frequency, small_shake_intensity, small_shake_damping)
+					squash_and_stretch("squash", squash_amount, squash_impact_time, squash_return_time)
 					main_weapon.fire_cooldown.start()
 
 	# Camera Shake
@@ -134,3 +158,14 @@ func _on_shake_time_timeout() -> void:
 	if camera_tween: camera_tween.kill()
 	camera_tween = camera_2d.create_tween()
 	camera_tween.tween_property(camera_2d, "offset", Vector2.ZERO, 0.1)
+
+func squash_and_stretch (type, amount, impact_time, return_time):
+	if squash_stretch_tween: squash_stretch_tween.kill()
+	squash_stretch_tween = sprite.create_tween()
+	var val: Vector2
+	match type:
+		"squash": val = Vector2(sprite.scale.x+amount, scale.y-amount)
+		"stretch": val = Vector2(scale.x-amount, sprite.scale.y + amount)
+	squash_stretch_tween.set_ease(Tween.EASE_IN_OUT)
+	squash_stretch_tween.tween_property(sprite, "scale", val, impact_time)
+	squash_stretch_tween.tween_property(sprite, "scale", Vector2(1, 1), return_time)

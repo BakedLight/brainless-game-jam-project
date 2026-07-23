@@ -139,7 +139,6 @@ _data = {
 [node name="Player" type="CharacterBody2D" unique_id=281525179]
 collision_mask = 54
 script = ExtResource("1_l8h54")
-normal_speeed = 70
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=255355832]
 position = Vector2(4, 0)
@@ -151,21 +150,22 @@ modulate = Color(1.5720325, 1.5720325, 1.5720325, 1)
 rotation = 1.5707964
 texture = ExtResource("4_gwnis")
 
-[node name="Weapons" type="Node2D" parent="." unique_id=1885392985]
+[node name="Weapons" type="Node2D" parent="Sprite2D" unique_id=1885392985]
+rotation = -1.5707964
 
-[node name="WeaponSwitcher" type="AnimationPlayer" parent="Weapons" unique_id=2050991963]
+[node name="WeaponSwitcher" type="AnimationPlayer" parent="Sprite2D/Weapons" unique_id=2050991963]
 libraries/ = SubResource("AnimationLibrary_k53q1")
 
-[node name="Primary" type="Node2D" parent="Weapons" unique_id=973871985]
+[node name="Primary" type="Node2D" parent="Sprite2D/Weapons" unique_id=973871985]
 
-[node name="Revolver" parent="Weapons/Primary" unique_id=741212810 instance=ExtResource("3_btcbx")]
+[node name="Revolver" parent="Sprite2D/Weapons/Primary" unique_id=741212810 instance=ExtResource("3_btcbx")]
 position = Vector2(8, 0)
 
-[node name="Special" type="Node2D" parent="Weapons" unique_id=1266052461]
+[node name="Special" type="Node2D" parent="Sprite2D/Weapons" unique_id=1266052461]
 visible = false
 modulate = Color(1, 1, 1, 0)
 
-[node name="KnifeHolder" parent="Weapons/Special" unique_id=1694094518 instance=ExtResource("4_k53q1")]
+[node name="KnifeHolder" parent="Sprite2D/Weapons/Special" unique_id=1694094518 instance=ExtResource("4_k53q1")]
 position = Vector2(10.666666, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]

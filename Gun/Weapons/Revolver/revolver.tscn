@@ -44,7 +44,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0.0, 1.0, 0.0]
+"values": [0.0, 1.2, 0.0]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -176,7 +176,7 @@ position = Vector2(0, -6)
 color = Color(1, 0.8494162, 0.28707156, 1)
 energy = 0.0
 texture = SubResource("GradientTexture2D_ogq8d")
-texture_scale = 0.5
+texture_scale = 0.7
 
 [node name="MuzzleFlash" type="GPUParticles2D" parent="." unique_id=951449335]
 material = SubResource("CanvasItemMaterial_cxvtf")
