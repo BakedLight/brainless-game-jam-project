@@ -8,18 +8,32 @@ enum States {
 	HURT,
 	DYING
 }
+
 var current_state
 var is_tweening: bool = false
 var translation_tween: Tween
 var rotation_tween: Tween
 var health_tween: Tween
+var squash_stretch_tween: Tween
 
+# Pathfinding values
 var petrol_distance = 0
 @export var petrol_speed: int = 40
 @export var chase_speed: int = 60
 @export var turn_time: float = 0.2
 @export var health: int = 20
 
+# Squash And Stretch Defaults
+@export_category("Squash And Stretch Defaults")
+@export var squash_amount: float = 0.3
+@export var squash_impact_time: float = 0.05
+@export var squash_return_time: float = 0.2
+@export var stretch_amount: float = 0.3
+@export var stretch_impact_time: float = 0.05
+@export var stretch_return_time: float = 0.2
+
+# Node References
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var path_follow: PathFollow2D = $".."
 @onready var path_2d: Path2D = $"../.."
 @onready var progress_bar_anchor: Node2D = $"ProgressBar Anchor"
@@ -105,16 +119,17 @@ func _process(_delta: float) -> void:
 			if translation_tween: translation_tween.pause()
 			if rotation_tween: rotation_tween.pause()
 			# Wait for the damage cooldown before returning to the previous state
-			animation_player.play("Blink")
+			animation_player.play("Hurt")
 			await get_tree().create_timer(animation_player.current_animation_length).timeout
 			current_state = States.REACHING_PLAYER
 		
 		States.DYING:
 			die()
 
-func damage_taken(damage:int) -> void:
+func damage_taken(damage:int, damage_dir: Vector2) -> void:
 	# Handle damage logic here
 	current_state = States.HURT
+	squash_and_stretch("squash", squash_amount, squash_impact_time, squash_return_time, damage_dir)
 	health -= damage
 	if health_tween: health_tween.kill()
 	health_tween = create_tween()
@@ -136,3 +151,17 @@ func can_view() -> bool:
 		return false
 	else:
 		return true
+
+func squash_and_stretch (type, amount, impact_time, return_time, direction):
+	if squash_stretch_tween: squash_stretch_tween.kill()
+	squash_stretch_tween = sprite.create_tween()
+	var rand_x = -randf_range(amount/3, amount)
+	var equivalent_y = (direction.y/direction.x) * rand_x
+	equivalent_y = clamp(equivalent_y, -rand_x, rand_x)
+	var val: Vector2
+	match type:
+		"squash": val = Vector2(sprite.scale.x+rand_x, scale.y-amount)
+		"stretch": val = Vector2(scale.x-amount, sprite.scale.y + amount)
+	squash_stretch_tween.set_ease(Tween.EASE_IN_OUT)
+	squash_stretch_tween.tween_property(sprite, "global_scale", val, impact_time)
+	squash_stretch_tween.tween_property(sprite, "global_scale", Vector2(1, 1), return_time)
