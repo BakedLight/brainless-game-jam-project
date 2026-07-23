@@ -3,6 +3,7 @@ extends Sprite2D
 signal cooldown_ended
 
 @onready var fire_cooldown: Timer = $FireCooldown
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @export var auto_shoot: bool = true
 @export var damage:int = 10

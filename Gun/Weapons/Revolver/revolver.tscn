@@ -2,6 +2,162 @@
 
 [ext_resource type="Script" uid="uid://bbpbdthkafyoj" path="res://Gun/Weapons/Revolver/revolver.gd" id="1_00meh"]
 [ext_resource type="Texture2D" uid="uid://dll4w6r5hdp46" path="res://Assets/Projectiles/Revolver.png" id="1_s1mt2"]
+[ext_resource type="Texture2D" uid="uid://cdygq8km7f8f8" path="res://Assets/Textures/MuzzelFlash.png" id="3_cxvtf"]
+
+[sub_resource type="Animation" id="Animation_cxvtf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SparkParticles:local_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s1mt2"]
+resource_name = "Shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.2, 0.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MuzzleFlash")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SparkParticles")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"restart"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SparkParticles:local_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxvtf"]
+_data = {
+&"RESET": SubResource("Animation_cxvtf"),
+&"Shoot": SubResource("Animation_s1mt2")
+}
+
+[sub_resource type="Gradient" id="Gradient_i5c6h"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ogq8d"]
+gradient = SubResource("Gradient_i5c6h")
+fill = 1
+fill_from = Vector2(0.50341296, 0.49658704)
+fill_to = Vector2(0.8242321, 0.13481228)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cxvtf"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_i5c6h"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.01351352, 1), 0.0, 0.0, 0, 0, Vector2(0.09765625, 1), -0.03753662, -0.03753662, 0, 0, Vector2(0.3984375, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_cxvtf"]
+curve = SubResource("Curve_i5c6h")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ogq8d"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_cxvtf")
+anim_offset_max = 1.0
+
+[sub_resource type="Curve" id="Curve_ef5nd"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.6015625, 1), 0.0, 0.0, 0, 0, Vector2(0.78515625, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ymbhq"]
+curve = SubResource("Curve_ef5nd")
+
+[sub_resource type="Gradient" id="Gradient_cxvtf"]
+offsets = PackedFloat32Array(0, 0.31967214, 0.59836066)
+colors = PackedColorArray(1.8247963, 1.8247963, 1.8247963, 1, 1.1593142, 1.1638972, 0.63135785, 1, 1, 0.6879359, 0.5563933, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cxvtf"]
+gradient = SubResource("Gradient_cxvtf")
+
+[sub_resource type="Curve" id="Curve_cxvtf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.734375, 0.49193555), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_uuko3"]
+curve = SubResource("Curve_cxvtf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cxvtf"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -1.3, 0)
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 80.0
+initial_velocity_max = 130.0
+gravity = Vector3(0, 0, 0)
+damping_min = 100.00001
+damping_max = 150.0
+scale_curve = SubResource("CurveTexture_uuko3")
+color_ramp = SubResource("GradientTexture1D_cxvtf")
+alpha_curve = SubResource("CurveTexture_ymbhq")
 
 [node name="Revolver" type="Sprite2D" unique_id=741212810]
 rotation = 1.5707964
@@ -11,5 +167,39 @@ script = ExtResource("1_00meh")
 [node name="FireCooldown" type="Timer" parent="." unique_id=268774569]
 wait_time = 0.5
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=377569863]
+libraries/ = SubResource("AnimationLibrary_cxvtf")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1614816743]
+position = Vector2(0, -6)
+color = Color(1, 0.8494162, 0.28707156, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_ogq8d")
+texture_scale = 0.7
+
+[node name="MuzzleFlash" type="GPUParticles2D" parent="." unique_id=951449335]
+material = SubResource("CanvasItemMaterial_cxvtf")
+position = Vector2(0, -6)
+emitting = false
+amount = 1
+texture = ExtResource("3_cxvtf")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 0.48
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ogq8d")
+
+[node name="SparkParticles" type="GPUParticles2D" parent="." unique_id=426435722]
+position = Vector2(0, -6)
+emitting = false
+amount = 3
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 0.71
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_cxvtf")
 
 [connection signal="timeout" from="FireCooldown" to="." method="_on_fire_cooldown_timeout"]

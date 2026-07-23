@@ -10,7 +10,82 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_c7iwb"]
 radius = 8.062258
 
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_t3js6"]
+parameter_name = "FlashColour"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_15l1u"]
+parameter_name = "Amount"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_k3jrl"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_4jbba"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_u3xob"]
+function = 31
+
+[sub_resource type="VisualShader" id="VisualShader_qsapd"]
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_t3js6")
+nodes/fragment/2/position = Vector2(-480, -32)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_15l1u")
+nodes/fragment/3/position = Vector2(-768, 320)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_k3jrl")
+nodes/fragment/5/position = Vector2(-528, 176)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_4jbba")
+nodes/fragment/7/position = Vector2(-67.307816, 68.71863)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatFunc_u3xob")
+nodes/fragment/8/position = Vector2(-384, 304)
+nodes/fragment/connections = PackedInt32Array(2, 0, 7, 0, 5, 0, 7, 1, 7, 0, 0, 0, 3, 0, 8, 0, 8, 0, 7, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogq8d"]
+shader = SubResource("VisualShader_qsapd")
+shader_parameter/FlashColour = Color(2.844042, 2.844042, 2.844042, 1)
+shader_parameter/Amount = 0.0
+
+[sub_resource type="Animation" id="Animation_15l1u"]
+resource_name = "Hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.3),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_k3jrl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k3jrl"]
+_data = {
+&"Hurt": SubResource("Animation_15l1u"),
+&"RESET": SubResource("Animation_k3jrl")
+}
+
 [node name="Shooter1" type="CharacterBody2D" unique_id=1796150351 groups=["Enemies"]]
+rotation = -0.59949934
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_qr0wp")
@@ -37,6 +112,7 @@ rotation = 1.5707964
 shape = SubResource("CircleShape2D_c7iwb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=319973623]
+material = SubResource("ShaderMaterial_ogq8d")
 rotation = 1.5707964
 texture = ExtResource("2_tloh8")
 
@@ -46,7 +122,7 @@ position = Vector2(16, 0)
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=535738012]
 position = Vector2(5, 0)
 color = Color(1, 0.604649, 0.5535536, 1)
-energy = 0.8
+energy = 0.4
 texture = ExtResource("2_qr0wp")
 texture_scale = 0.1
 
@@ -67,3 +143,6 @@ tint_over = Color(0.5535536, 0, 0.47312066, 1)
 tint_progress = Color(1, 0.48452926, 0.543951, 1)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1538409777]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=552055246]
+libraries/ = SubResource("AnimationLibrary_k3jrl")

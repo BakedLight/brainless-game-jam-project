@@ -1,0 +1,33 @@
+[gd_resource type="VisualShader" format=3 uid="uid://d4dlk2670h13q"]
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_lyls1"]
+parameter_name = "FlashColour"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_mubky"]
+parameter_name = "Amount"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_q872m"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_lyls1"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_mubky"]
+function = 31
+
+[resource]
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_lyls1")
+nodes/fragment/2/position = Vector2(-480, -32)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_mubky")
+nodes/fragment/3/position = Vector2(-768, 320)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_q872m")
+nodes/fragment/5/position = Vector2(-528, 176)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_lyls1")
+nodes/fragment/7/position = Vector2(-67.307816, 68.71863)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatFunc_mubky")
+nodes/fragment/8/position = Vector2(-384, 304)
+nodes/fragment/connections = PackedInt32Array(2, 0, 7, 0, 5, 0, 7, 1, 7, 0, 0, 0, 3, 0, 8, 0, 8, 0, 7, 2)

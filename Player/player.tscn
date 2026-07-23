@@ -115,7 +115,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("..")
+tracks/4/path = NodePath("../..")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -146,35 +146,41 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_fhl08")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2144462545]
-modulate = Color(1.2363764, 1.2363764, 1.2363764, 1)
+modulate = Color(1.5720325, 1.5720325, 1.5720325, 1)
 rotation = 1.5707964
 texture = ExtResource("4_gwnis")
 
-[node name="Weapons" type="Node2D" parent="." unique_id=1885392985]
+[node name="Weapons" type="Node2D" parent="Sprite2D" unique_id=1885392985]
+rotation = -1.5707964
 
-[node name="WeaponSwitcher" type="AnimationPlayer" parent="Weapons" unique_id=2050991963]
+[node name="WeaponSwitcher" type="AnimationPlayer" parent="Sprite2D/Weapons" unique_id=2050991963]
 libraries/ = SubResource("AnimationLibrary_k53q1")
 
-[node name="Primary" type="Node2D" parent="Weapons" unique_id=973871985]
+[node name="Primary" type="Node2D" parent="Sprite2D/Weapons" unique_id=973871985]
 
-[node name="Revolver" parent="Weapons/Primary" unique_id=741212810 instance=ExtResource("3_btcbx")]
+[node name="Revolver" parent="Sprite2D/Weapons/Primary" unique_id=741212810 instance=ExtResource("3_btcbx")]
 position = Vector2(8, 0)
 
-[node name="Special" type="Node2D" parent="Weapons" unique_id=1266052461]
+[node name="Special" type="Node2D" parent="Sprite2D/Weapons" unique_id=1266052461]
 visible = false
 modulate = Color(1, 1, 1, 0)
 
-[node name="KnifeHolder" parent="Weapons/Special" unique_id=1694094518 instance=ExtResource("4_k53q1")]
+[node name="KnifeHolder" parent="Sprite2D/Weapons/Special" unique_id=1694094518 instance=ExtResource("4_k53q1")]
 position = Vector2(10.666666, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=304923494]
-zoom = Vector2(7, 7)
+zoom = Vector2(5, 5)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="ShakeTime" type="Timer" parent="Camera2D" unique_id=696031685]
+one_shot = true
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1107612026]
 color = Color(1.2363764, 1.1676517, 1.0158488, 1)
-energy = 0.4
+energy = 0.2
 texture = ExtResource("3_gwnis")
-texture_scale = 0.2
+texture_scale = 0.1
 
 [node name="BulletSpawners" type="Node2D" parent="." unique_id=1689949888]
 
@@ -186,3 +192,5 @@ position = Vector2(14, -1)
 
 [node name="BulletPos3" type="Marker2D" parent="BulletSpawners" unique_id=2045900796]
 position = Vector2(14, 1)
+
+[connection signal="timeout" from="Camera2D/ShakeTime" to="." method="_on_shake_time_timeout"]
