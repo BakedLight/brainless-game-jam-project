@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c48wgxkswuexv"]
 
 [ext_resource type="Script" uid="uid://d0sjcs3evibi1" path="res://Enemies/Shooter1/shooter_1.gd" id="1_qr0wp"]
-[ext_resource type="Shader" uid="uid://d4dlk2670h13q" path="res://Shaders/enemy_blink.tres" id="2_15l1u"]
 [ext_resource type="Texture2D" uid="uid://bnlxbntpptrdb" path="res://Assets/Lights/Light Circle 4.png" id="2_qr0wp"]
 [ext_resource type="Texture2D" uid="uid://cn8puqxmxoase" path="res://Assets/Enemies/enemy_shooter.png" id="2_tloh8"]
 [ext_resource type="Texture2D" uid="uid://dinodcw2xaqhj" path="res://Assets/Enemies/Enemy health bar/Under.png" id="4_t3js6"]
@@ -11,9 +10,41 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_c7iwb"]
 radius = 8.062258
 
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_t3js6"]
+parameter_name = "FlashColour"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_15l1u"]
+parameter_name = "Amount"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_k3jrl"]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_4jbba"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_u3xob"]
+function = 31
+
+[sub_resource type="VisualShader" id="VisualShader_qsapd"]
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorParameter_t3js6")
+nodes/fragment/2/position = Vector2(-480, -32)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatParameter_15l1u")
+nodes/fragment/3/position = Vector2(-768, 320)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_k3jrl")
+nodes/fragment/5/position = Vector2(-528, 176)
+nodes/fragment/7/node = SubResource("VisualShaderNodeMix_4jbba")
+nodes/fragment/7/position = Vector2(-67.307816, 68.71863)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatFunc_u3xob")
+nodes/fragment/8/position = Vector2(-384, 304)
+nodes/fragment/connections = PackedInt32Array(2, 0, 7, 0, 5, 0, 7, 1, 7, 0, 0, 0, 3, 0, 8, 0, 8, 0, 7, 2)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ogq8d"]
-shader = ExtResource("2_15l1u")
-shader_parameter/FlashColour = Color(3.2944162, 2.9111016, 3.2944162, 1)
+shader = SubResource("VisualShader_qsapd")
+shader_parameter/FlashColour = Color(2.844042, 2.844042, 2.844042, 1)
 shader_parameter/Amount = 0.0
 
 [sub_resource type="Animation" id="Animation_15l1u"]
