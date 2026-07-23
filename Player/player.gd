@@ -59,7 +59,7 @@ var pb_intensity: float
 @export_category("Push Back")
 @export var push_back_time: float = 0.05
 @export var come_forward_time: float = 0.2
-@export var push_back_intensity: float = 10
+@export var push_back_intensity: float = 5.0
 
 # Node References
 @onready var sprite: Sprite2D = $Sprite2D
@@ -189,11 +189,9 @@ func offset_sprite(i, push_back_t, come_forward_t):
 	pb_forward_time = come_forward_t
 	pb_intensity = i
 
-	var rand_x = randf_range(-pb_intensity, pb_intensity)
-	var equivalent_y = (dir_to_mouse.y/dir_to_mouse.x) * abs(rand_x)
-	equivalent_y = clamp(equivalent_y, -rand_x, rand_x)
+	var rand_x = -randf_range(pb_intensity/3, pb_intensity)
 
 	if push_back_tween: push_back_tween.kill()
 	push_back_tween = sprite.create_tween()
-	push_back_tween.tween_property(sprite, "position",  sprite.position+Vector2(rand_x, equivalent_y), pb_back_time)
+	push_back_tween.tween_property(sprite, "position",  sprite.position+Vector2(rand_x, 0), pb_back_time)
 	push_back_tween.tween_property(sprite, "position", Vector2.ZERO, pb_forward_time)
